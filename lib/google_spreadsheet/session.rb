@@ -215,6 +215,7 @@ module GoogleSpreadsheet
             extra_header = {}
           end
           response_type = params[:response_type] || :xml
+          data.force_encoding("BINARY") if data.respond_to?(:force_encoding)
 
           while true
             response = @fetcher.request_raw(method, url, data, extra_header, auth)
